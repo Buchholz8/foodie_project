@@ -1,13 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TestingPage from '@/views/TestingPage.vue'
+import LoginView from '@/views/LoginView.vue'
+import ClientPFP from '@/views/ClientPFP.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
 {
   path: '/',
-  views: TestingPage
+  component: LoginView
+},
+{
+  path: '/',
+  component: ClientPFP
 }
 ]
 
