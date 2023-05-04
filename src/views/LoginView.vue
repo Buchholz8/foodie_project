@@ -1,16 +1,16 @@
 <template>
     <div>
-        <login-component></login-component>
+        <client-login-component></client-login-component>
         <client-signup></client-signup>
     </div>
 </template>
 
 <script>
-import LoginComponent from '@/components/LoginComponent.vue'
+import ClientLoginComponent from '@/components/ClientLoginComponent.vue'
 import ClientSignup from '@/components/ClientSignup.vue'
     export default {
         components: {
-            LoginComponent,
+            ClientLoginComponent,
             ClientSignup
         }
     }

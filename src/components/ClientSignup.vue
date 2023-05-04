@@ -1,7 +1,6 @@
 <template>
   <div>
     <section>
-      <h2>Please login or Sign up</h2>
       <p>Sign up</p>
       <input type="email" placeholder="email" ref="email_in" />
       <input type="password" placeholder="password" ref="password_in" />
@@ -16,7 +15,7 @@
 
 <script>
 import axios from 'axios' 
-
+import cookies from 'vue-cookies'
 export default {
  methods: {
  attempt_signup: function( ) {
@@ -32,10 +31,12 @@ export default {
       first_name: this.$refs[`first_name`].value,
       last_name:  this.$refs[`last_name`].value,
       username: this.$refs[`username`].value,
-      image_url:  this.$refs[`porfile_pic`].value
+      image_url:  this.$refs[`profile_pic`].value
     }
   }).then((response) => {
-    response
+    cookies.set('token' , response[`data`][`token`])
+    cookies.set(`client_id` , response[`data`][`client_id`])
+    this.$router.push(`/ClientPFP.vue`)
   }).catch((error) => {
     error;
   })
