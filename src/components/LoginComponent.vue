@@ -1,19 +1,25 @@
 <template>
   <div>
-    <section>
-            <p>login</p>
-      <input type="email" placeholder="email" id="login_email" />
-      <input type="password" placeholder="password" id="login_password" />
-      <button >Log In</button>
-    </section>
+
   </div>
 </template>
 
 <script>
-
+import axios from 'axios'
 
 export default {
-
+mounted( ) {
+  axios.request({
+    url: 'https://foodie.bymoen.codes/api/validate',
+    headers: {
+      'x-api-key': `rnA2v1qeHqSIjeL98kXk`
+    }
+  }).then((response) => {
+    response
+  }).catch((error) => {
+    error
+  })
+}
 };
 </script>
 

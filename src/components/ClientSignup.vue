@@ -16,14 +16,14 @@
 
 <script>
 import axios from 'axios' 
-import cookies from 'vue-cookies'
+
 export default {
  methods: {
  attempt_signup: function( ) {
   axios.request({
     url: `https://foodie.bymoen.codes/api/client`,
     headers: {
-      'x-api-key' : 'rnA2v1qeHqSIjeL98kXk'
+      'x-api-key': `rnA2v1qeHqSIjeL98kXk`
     },
     method: `POST`,
     data: {
@@ -35,7 +35,7 @@ export default {
       image_url:  this.$refs[`porfile_pic`].value
     }
   }).then((response) => {
-    cookies.set(`token` , response[`data`][`token`])
+    response
   }).catch((error) => {
     error;
   })

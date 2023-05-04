@@ -7,6 +7,9 @@
 <script>
 import ClientPFPComp from '@/components/ClientPFPComp.vue'
     export default {
+
+
+
         methods: {
             components: {
                 ClientPFPComp
