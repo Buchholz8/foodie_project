@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
-import ClientPFP from '@/views/ClientPFP.vue'
+import ClientHome from '@/views/ClientHome.vue'
+import RestaurantHome from '@/views/RestaurantHome'
 
 Vue.use(VueRouter)
 
@@ -12,7 +13,11 @@ const routes = [
 },
 {
   path: '/',
-  component: ClientPFP
+  component: ClientHome
+},
+{
+  path: '/',
+  component: RestaurantHome
 }
 ]
 

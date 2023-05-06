@@ -21,14 +21,14 @@ export default {
           },
           method: "POST",
           data: {
-            email: this.$refs[`login_email`],
-            password: this.$refs[`login_password`],
+            email: this.$refs[`login_email`].value,
+            password: this.$refs[`login_password`].value,
           },
         })
         .then((response) => {
-          cookies.set("token", response[`data`][`token`]);
+          cookies.set(`token`, response[`data`][`token`]);
           cookies.set(`client_id`, response[`data`][`client_id`]);
-          this.$router.push(`/ClientPFP`)
+          this.$router.push(`/ClientHome`)
         })
         .catch((error) => {
           error;
