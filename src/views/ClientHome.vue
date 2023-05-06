@@ -1,7 +1,7 @@
 <template>
   <div>
-    <client-profile-info></client-profile-info>
-    <client-profile-edit></client-profile-edit>
+<client-profile-info></client-profile-info>
+<client-profile-edit></client-profile-edit>
   </div>
 </template>
 
