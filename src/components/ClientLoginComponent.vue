@@ -15,7 +15,7 @@ export default {
     client_login: function () {
       axios
         .request({
-          url: "https://foodie.bymoen.codes/api/validate",
+          url: "https://foodie.bymoen.codes/api/client-login",
           headers: {
             "x-api-key": `rnA2v1qeHqSIjeL98kXk`,
           },
@@ -28,7 +28,7 @@ export default {
         .then((response) => {
           cookies.set("token", response[`data`][`token`]);
           cookies.set(`client_id`, response[`data`][`client_id`]);
-          this.$router.push(`/ClientPFP.vue`)
+          this.$router.push(`/ClientPFP`)
         })
         .catch((error) => {
           error;
