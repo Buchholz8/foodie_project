@@ -1,26 +1,27 @@
 <template>
     <div>
-        <client-p-comp></client-p-comp>
+        <client-profile-info></client-profile-info>
+        <client-profile-edit></client-profile-edit>
     </div>
 </template>
 
 <script>
 import cookies from 'vue-cookies'
-import ClientPComp from '@/components/ClientPComp.vue'
+import ClientProfileInfo from '@/components/ClientProfileInfo.vue'
+import ClientProfileEdit from '@/components/ClientProfileEdit.vue'
     export default {
 
         mounted() {
 
 if(cookies.get(`token`) === null){
-    this.$router.push(`/LoginView`)
+    this.$router.push(`/`)
 }
         },
 
-        methods: {
             components: {
-                ClientPComp
+                ClientProfileInfo,
+                ClientProfileEdit
             }
-        }
     }
 </script>
 
