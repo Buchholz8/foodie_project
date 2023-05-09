@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import ClientHome from '@/views/ClientHome.vue'
 import RestaurantHome from '@/views/RestaurantHome'
-
+import ClientOrderPage from '@/views/ClientOrderPage'
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,6 +18,10 @@ const routes = [
 {
   path: '/',
   component: RestaurantHome
+},
+{
+  path: '/' , 
+  component: ClientOrderPage
 }
 ]
 

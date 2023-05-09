@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import ClientLogin from '@/components/ClientLogin.vue'
-import ClientSignup from '@/components/ClientSignup.vue'
-import RestaurantSignup from '@/components/RestaurantSignup.vue'
-import RestaurantLogin from '@/components/RestaurantLogin.vue'
+import ClientLogin from '@/components/Client/ClientLogin.vue'
+import ClientSignup from '@/components/Client/ClientSignup.vue'
+import RestaurantSignup from '@/components/Rest/RestaurantSignup.vue'
+import RestaurantLogin from '@/components/Rest/RestaurantLogin.vue'
     export default {
         methods: {
             handle_option() {

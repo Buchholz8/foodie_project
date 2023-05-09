@@ -1,6 +1,12 @@
 <template>
   <div>
     <button v-if="fail_load === true" @click="get_rest_info"> Restart </button>
+    <p> {{rest_object[`name`]}} </p>
+    <p> {{rest_object[`address`]}} </p>
+    <p> {{rest_object[`phone_number`]}} </p>
+    <p> {{rest_object[`bio`]}} </p>
+    <p> {{rest_object[`city`]}} </p>
+    <img :src="rest_object[`banner_url`]" alt="">
   </div>
 </template>
 
@@ -10,7 +16,7 @@ import cookies from "vue-cookies";
 export default {
   mounted() {
     this.get_resta_info();
-    this.$root.$on(``);
+    this.$root.$on(`rest_info` , this.get_rest_info);
   },
   data() {
     return {

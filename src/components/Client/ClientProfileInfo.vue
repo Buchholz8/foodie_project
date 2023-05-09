@@ -1,6 +1,8 @@
 <template>
   <div>
-
+    <p> {{user_object[`created_at`]}} </p>
+    <p> {{user_object[`username`]}} </p>
+    <img :src="user_object[`image_url`]" alt="">
   </div>
 </template>
 

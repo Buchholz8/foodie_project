@@ -7,8 +7,8 @@
 
 <script>
 import cookies from "vue-cookies";
-import ClientProfileInfo from '@/components/ClientProfileInfo.vue';
-import ClientProfileEdit from '@/components/ClientProfileEdit.vue';
+import ClientProfileInfo from '@/components/Client/ClientProfileInfo.vue';
+import ClientProfileEdit from '@/components/Client/ClientProfileEdit.vue';
 export default {
   components: {
     ClientProfileInfo,

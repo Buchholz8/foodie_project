@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>login</p>
+    <p>login as a client</p>
     <input type="email" placeholder="email" ref="login_email" />
     <input type="password" placeholder="password" ref="login_password" />
     <button @click="client_login">Login</button>
