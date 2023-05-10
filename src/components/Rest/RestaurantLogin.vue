@@ -12,14 +12,14 @@ import axios from "axios";
 import cookies from "vue-cookies";
 export default {
   methods: {
-    attempt_login() {
+    attempt_login: function() {
       axios
         .request({
           url: "https://foodie.bymoen.codes/api/restaurant-login",
           headers: {
             "x-api-key": `rnA2v1qeHqSIjeL98kXk`,
           },
-          method: `POST`,
+          method: "POST",
           data: {
             email: this.$refs[`rest_email`],
             password: this.$refs[`rest_password`],
@@ -27,7 +27,7 @@ export default {
         })
         .then((response) => {
           cookies.set(`token`, response[`data`][`token`]);
-          cookies.get(`restaurant_id`, response[`data`][`restaurant_id`]);
+          cookies.set(`restaurant_id`, response[`data`][`restaurant_id`]);
           this.$router.push('/RestH')
         })
         .catch((error) => {

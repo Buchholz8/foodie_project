@@ -6,7 +6,7 @@
 
 <script>
 import axios from 'axios'
-import SingleMenuItem from '@/components/SingleMenuItem.vue'
+import cookies from 'vue-cookies'
 import SingleMenuItem from '@/components/menu/SingleMenuItem.vue'
     export default {
         components: {
