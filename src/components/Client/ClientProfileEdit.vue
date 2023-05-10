@@ -1,5 +1,12 @@
 <template>
   <div>
+    <p>want to change your information?</p>
+    <input type="text" ref="email" placeholder="email">
+    <input type="text" ref="username" placeholder="username">
+    <input type="text" ref="first_name" placeholder="first name">
+    <input type="text" ref="last_name" placeholder="last name">
+    <input type="text" ref="image_url" placeholder="img">
+    <p>please enter your password</p>
     <input type="password" placeholder="password" ref="password" />
     <button @click="patched_data">Save Updates</button>
   </div>

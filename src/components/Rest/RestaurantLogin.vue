@@ -28,7 +28,7 @@ export default {
         .then((response) => {
           cookies.set(`token`, response[`data`][`token`]);
           cookies.get(`restaurant_id`, response[`data`][`restaurant_id`]);
-          this.$router.push('/RestaurantHome')
+          this.$router.push('/RestH')
         })
         .catch((error) => {
           error;

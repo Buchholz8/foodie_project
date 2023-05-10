@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div v-for="(order , i ) in orders" :key="i">
+        <h2> {{ orders[`name`]}} </h2>
+        <p> {{ orders[`price`]}} </p>
+    </div>
     <p> {{this.message_result}} </p>
   </div>
 </template>
@@ -10,7 +14,7 @@ import cookies from "vue-cookies";
 export default {
   data() {
     return {
-      order_val: undefined,
+      orders: undefined,
       message_result: undefined
     };
   },
@@ -29,7 +33,7 @@ export default {
           }
         })
         .then((response) => {
-          this.order_val = response[`data`][0];
+          this.order_val = response[`data`];
         })
         .catch((error) => {
           this.message_result = error

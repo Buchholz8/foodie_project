@@ -12,15 +12,15 @@ const routes = [
   component: LoginView
 },
 {
-  path: '/',
+  path: '/ClientH',
   component: ClientHome
 },
 {
-  path: '/',
+  path: '/RestH',
   component: RestaurantHome
 },
 {
-  path: '/' , 
+  path: '/ClientO' , 
   component: ClientOrderPage
 }
 ]
