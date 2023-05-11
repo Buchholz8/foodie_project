@@ -8,6 +8,7 @@
 </template>
 
 <script>
+//a simple prop at brings in the menu_item
     export default {
     props: {
         menu_item: Object
@@ -16,9 +17,6 @@
 </script>
 
 <style scoped>
-    div{
-        border: 2px solid black;
-    }
     img{
         max-height: 120px;
         max-width: 120px;

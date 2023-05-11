@@ -4,6 +4,7 @@
 <button @click="change_info"> Change your info? </button>
 <client-profile-edit v-if="this.change_val === false"></client-profile-edit>
 <all-menu-item></all-menu-item>
+<shopping-cart></shopping-cart>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import cookies from "vue-cookies";
 import ClientProfileInfo from '@/components/Client/ClientProfileInfo.vue';
 import ClientProfileEdit from '@/components/Client/ClientProfileEdit.vue';
 import AllMenuItem from '@/components/menu/AllMenuItem.vue'
+import ShoppingCart from '@/components/menu/ShoppingCart.vue'
 export default {
   data() {
     return {
@@ -29,7 +31,8 @@ methods: {
   components: {
     ClientProfileInfo,
     ClientProfileEdit,
-    AllMenuItem
+    AllMenuItem,
+    ShoppingCart
   },
   mounted() {
     if (cookies.get(`token`) === null) {
