@@ -1,8 +1,9 @@
 <template>
   <div>
-    <p v-if="user_object">{{ user_object['created_at'] }}</p>
-    <p v-if="user_object">{{ user_object['username'] }}</p>
-    <img v-if="user_object" :src="user_object['image_url']" alt="">
+    <p>hello world</p>
+    <p v-if="user_object">{{ user_object[4] }}</p>
+    <p v-if="user_object">{{ user_object[0] }}</p>
+    <img v-if="user_object" :src="user_object[1]" alt="">
   </div>
 </template>
 
@@ -25,7 +26,7 @@ export default {
       axios.request({
         url: 'http://127.0.0.1:5000/api/client',
         method: 'GET',
-        data: {
+        params: {
           client_id: cookies.get('client_id')
         }
       }).then((response) => {

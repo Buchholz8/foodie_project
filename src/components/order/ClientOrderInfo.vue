@@ -41,7 +41,7 @@ export default {
     axios
       .request({
         url: "http://127.0.0.1:5000/api/client-order",
-        method: `get`,
+        method: `GET`,
         data: {
           order_id : this.$refs[`order_id`],
         }

@@ -12,6 +12,8 @@
     <p>please enter your password</p>
     <input type="password" placeholder="password" ref="password" />
     <button @click="patched_data">Save Updates</button>
+    <p v-if="successMessage">{{ successMessage }}</p>
+    <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -19,52 +21,51 @@
 import cookies from "vue-cookies";
 import axios from "axios";
 export default {
+  data() {
+    return {
+      successMessage: "",
+      errorMessage: "",
+    };
+  },
   mounted() {
     this.$root.$on(`client_info`, this.new_info);
   },
   methods: {
-    new_info: function (user_info) {
-      this.$refs[`email`].value = user_info[`email`];
-      this.$refs[`username`].value = user_info[`username`];
-      this.$refs[`first_name`].value = user_info[`first_name`];
-      this.$refs[`last_name`].value = user_info[`last_name`];
-      this.$refs[`image_url`].value = user_info[`image_url`];
-      this.$refs[`bio`].value = user_info[`bio`];
-      this.$refs[`password`].value = user_info[`password`];
-      this.$refs[`username`].value = user_info[`username`];
-    },
     patch_request: function () {
       let patched_data = {
-        username: this.$refs[`username`].value,
-        email: this.$refs[`email`].value,
-        image_url: this.$refs[`image_url`].value,
-        bio: this.$refs[`bio`].value,
-        first_name: this.$refs[`first_name`].value,
-        last_name: this.$refs[`last_name`].value,
-        password: this.$refs[`password`].value,
-        username_input: this.$refs[`username`].value
+        username: this.$refs["username"].value,
+        email: this.$refs["email"].value,
+        img_url: this.$refs["image_url"].value,
+        bio: this.$refs["bio"].value,
+        first_name: this.$refs["first_name"].value,
+        last_name: this.$refs["last_name"].value,
+        password: this.$refs["password"].value,
+        username_input: this.$refs["username_input"].value
       };
-      if (this.$refs[`password`].value !== ``) {
-        patched_data[`password`] = this.$refs[`password`].value;
+
+      if (this.$refs["password"].value !== "") {
+        patched_data["password"] = this.$refs["password"].value;
       }
+
       axios
-        .request({
-          url: "http://127.0.0.1:5000/api/client",
-          method: `PATCH`,
-          data: {
-            token: cookies.get(`token`),
-          },
+        .patch("http://127.0.0.1:5000/api/client", patched_data, {
+          headers: {
+            Authorization: "Bearer " + cookies.get("token")
+          }
         })
         .then(() => {
-          this.$root.$emit(`client_info`, patched_data);
+          this.$root.$emit("client_info", patched_data);
+          this.successMessage = "Successful";
+          this.errorMessage = "";
         })
-        .catch((error) => {
+        .catch(error => {
           error;
+          this.successMessage = "";
+          this.errorMessage = error.response.data;
         });
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -24,7 +24,7 @@ import axios from 'axios'
         })
         .then((response) => {
           response;
-          cookies.delete(`token`)
+          cookies.remove(`token`)
           this.$router.push(`/`)
         })
         .catch((error) => {

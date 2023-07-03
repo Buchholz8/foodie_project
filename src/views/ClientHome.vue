@@ -38,12 +38,12 @@ export default {
           url: "http://127.0.0.1:5000/api/client-login",
           method: "DELETE",
           data: {
-            token : cookies.get(`token`)
+            token_input : cookies.get(`token`)
           }
         })
         .then((response) => {
           response;
-          cookies.delete(`token`)
+          cookies.remove(`token`)
           this.$router.push(`/`)
         })
         .catch((error) => {

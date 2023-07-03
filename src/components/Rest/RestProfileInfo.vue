@@ -1,46 +1,53 @@
 <template>
   <div>
-    <button v-if="fail_load" @click="get_rest_info">Restart</button>
-    <template v-if="rest_object">
-      <p>{{ rest_object.name }}</p>
-      <p>{{ rest_object.address }}</p>
-      <p>{{ rest_object.phone_number }}</p>
-      <p>{{ rest_object.bio }}</p>
-      <p>{{ rest_object.city }}</p>
-      <img :src="rest_object.banner_url" alt="">
-    </template>
+    <p>Want to update your restaurant information?</p>
+    <input type="text" ref="name" placeholder="Restaurant Name">
+    <input type="text" ref="address" placeholder="Address">
+    <input type="text" ref="phone_number" placeholder="Phone Number">
+    <input type="text" ref="bio" placeholder="Bio">
+    <input type="text" ref="password" placeholder="Password">
+    <input type="text" ref="email" placeholder="Email">
+    <input type="text" ref="city" placeholder="City">
+    <input type="text" ref="profile_url" placeholder="Profile URL">
+    <input type="text" ref="banner_url" placeholder="Banner URL">
+    <p>Please enter your password</p>
+    <input type="password" placeholder="Password" ref="password" />
+    <button @click="patchRestaurant">Save Updates</button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import cookies from "vue-cookies";
+import axios from "axios";
+
 export default {
-  mounted() {
-    this.get_rest_info();
-    this.$root.$on(`rest_info`, this.get_rest_info);
-  },
-  data() {
-    return {
-      rest_object: undefined,
-      fail_load: undefined
-    };
-  },
   methods: {
-    get_rest_info: function () {
+    patchRestaurant() {
+      const patchedData = {
+        name: this.$refs.name.value,
+        address: this.$refs.address.value,
+        phone_number: this.$refs.phone_number.value,
+        bio: this.$refs.bio.value,
+        password: this.$refs.password.value,
+        email: this.$refs.email.value,
+        city: this.$refs.city.value,
+        profile_url: this.$refs.profile_url.value,
+        banner_url: this.$refs.banner_url.value,
+      };
+
       axios
-        .request({
-          url: "http://127.0.0.1:5000/api/restaurant",
-          method: "GET",
-          data: {
-            token: cookies.get(`token`),
+        .patch("http://127.0.0.1:5000/api/restaurant", patchedData, {
+          headers: {
+            Authorization: `Bearer ${cookies.get("token")}`,
           },
         })
         .then((response) => {
-          this.rest_object = response[`data`][0];
+          // Handle successful response
+          console.log(response.data);
         })
-        .catch(() => {
-          this.fail_load = true
+        .catch((error) => {
+          // Handle error
+          console.error(error);
         });
     },
   },
