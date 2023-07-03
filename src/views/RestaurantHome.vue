@@ -19,7 +19,7 @@ import axios from 'axios'
           url: "http://127.0.0.1:5000/api/restaurant-login",
           method: "DELETE",
           data: {
-            token : cookies.get(`token`)
+            token_input : cookies.get(`token`)
           }
         })
         .then((response) => {

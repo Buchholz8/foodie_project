@@ -13,6 +13,8 @@
     <p>Please enter your password</p>
     <input type="password" placeholder="Password" ref="password" />
     <button @click="patchRestaurant">Save Updates</button>
+    <p v-if="successMessage">{{ successMessage }}</p>
+    <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -21,6 +23,12 @@ import cookies from "vue-cookies";
 import axios from "axios";
 
 export default {
+  data() {
+    return {
+      successMessage: "",
+      errorMessage: "",
+    };
+  },
   methods: {
     patchRestaurant() {
       const patchedData = {
@@ -42,16 +50,16 @@ export default {
           },
         })
         .then((response) => {
-          // Handle successful response
-          console.log(response.data);
+          response;
+          this.successMessage = "Successful";
+          this.errorMessage = "";
         })
         .catch((error) => {
-          // Handle error
-          console.error(error);
+          this.errorMessage = error.response.data;
         });
     },
   },
-};
+}
 </script>
 
 <style scoped></style>

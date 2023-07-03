@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div v-for="order in clientOrders" :key="order.id">
-      <p>Order ID: {{ order[0] }}</p>
-      <p>Item ID: {{ order[0] }}</p>
+    <button @click="handle_checkout">To Checkout</button>
+    <div>
+      <p>Order ID: {{ order_id }}</p>
+      <p>Item ID: {{ item_id }}</p>
     </div>
   </div>
 </template>
@@ -13,7 +14,8 @@ import cookies from 'vue-cookies';
 export default {
   data() {
     return {
-      clientOrders: [],
+      order_id: undefined,
+      item_id: undefined
     };
   },
   mounted() {
@@ -21,14 +23,19 @@ export default {
   },
   methods: {
     getClientOrders() {
-      this.clientOrders = cookies.get('Client_Order');
+      this.order_id = cookies.get('order_id');
+      this.item_id = cookies.get('item_id'); 
     },
-  },
+    handle_checkout() {
+      this.$router.push(`/ClientO`);
+    }
+  }
 };
 </script>
 
 <style scoped>
 </style>
+
 
 
 

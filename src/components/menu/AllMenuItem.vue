@@ -48,33 +48,27 @@
           });
       },
       make_order() {
-        const menuItemId = cookies.get('item_id');
-        const tokenId = cookies.get('token');
-        const restaurantId = cookies.get('restaurant_id');
-  
-        if (menuItemId && tokenId && restaurantId) {
-          const requestData = {
-            menu_item: menuItemId,
-            token_id: tokenId,
-            restaurant_id: restaurantId,
-          };
-  
           axios
-            .post('http://127.0.0.1:5000/api/client-order', requestData)
+            .request({
+              url: 'http://127.0.0.1:5000/api/client-order',
+            method: "POST",
+            data: {
+              item_id : cookies.get('item_id'),
+              token: cookies.get('token'),
+              restaurant_id : cookies.get('restaurant_id')
+            }
+          })
             .then((response) => {
-              const clientOrderData = response.data;
-              cookies.set('Client_Order', clientOrderData);
+              cookies.set('order_id' , response.data[0][4])
             })
             .catch((error) => {
-              console.error(error);
+              error;
             });
-        } else {
-          console.error('Missing required data to make the order.');
-        }
       },
       saveDataToCookie(item) {
         cookies.set('item_id', item[0], { expires: '1D' });
         cookies.set('restaurant_id', item[5], { expires: '1D' });
+        cookies.set('order_id' , item[6], { expires: '1D' })
       },
     },
   };

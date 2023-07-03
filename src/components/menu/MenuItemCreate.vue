@@ -10,17 +10,14 @@
 </template>
 
 <script>
-//import what is needed
 import axios from "axios";
 import cookies from "vue-cookies";
 export default {
-    //i create a data area
     data() {
         return {
             message: undefined
         }
     },
-    //the function that handles the api request
     methods: {
         menu_info: function () {
             axios
