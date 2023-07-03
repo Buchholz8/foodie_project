@@ -15,10 +15,7 @@ export default {
     client_login: function () {
       axios
         .request({
-          url: "https://foodie.bymoen.codes/api/client-login",
-          headers: {
-            "x-api-key": `rnA2v1qeHqSIjeL98kXk`,
-          },
+          url: "http://127.0.0.1:5000/api/client-login",
           method: "POST",
           data: {
             email: this.$refs[`login_email`].value,
@@ -26,8 +23,8 @@ export default {
           },
         })
         .then((response) => {
-          cookies.set(`token`, response[`data`][`token`]);
-          cookies.set(`client_id`, response[`data`][`client_id`]);
+          cookies.set(`token`, response[`data`][0][`token`]);
+          cookies.set('client_id' , response['data'][1][0][0])
           this.$router.push(`/ClientH`)
         })
         .catch((error) => {

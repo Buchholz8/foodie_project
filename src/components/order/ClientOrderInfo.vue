@@ -1,8 +1,10 @@
 <template>
   <div>
+    <input type="text" ref="Order_id" placeholder="order #">
+    <button @click="client_order_handler">Search Order</button>
     <div v-for="(order, i) in orders" :key="i">
-      <h1>Order Number : {{order[`order_id`]}} </h1>
-      <div v-for="(item , t) in order" :key="t">
+      <h1>Order Number : {{ order[`order_id`] }} </h1>
+      <div v-for="(item, t) in order" :key="t">
         <h2>{{ orders[`name`] }}</h2>
         <p>{{ orders[`price`] }}</p>
       </div>
@@ -13,7 +15,6 @@
 
 <script>
 import axios from "axios";
-import cookies from "vue-cookies";
 export default {
   methods: {
     sort_orders: function (unsorted_orders) {
@@ -36,26 +37,23 @@ export default {
       orders: undefined,
     };
   },
-  methods: {
-    client_order_handler: function () {
-      axios
-        .request({
-          url: "https://foodie.bymoen.codes/api/client-order",
-          headers: {
-            "x-api-key": `rnA2v1qeHqSIjeL98kXk`,
-            token: cookies.get("token"),
-          },
-        })
-        .then((response) => {
-          this.order_val = response[`data`];
-        })
-        .catch((error) => {
-          this.message_result = error;
-        });
-    },
+  client_order_handler: function () {
+    axios
+      .request({
+        url: "http://127.0.0.1:5000/api/client-order",
+        method: `get`,
+        data: {
+          order_id : this.$refs[`order_id`],
+        }
+      })
+      .then((response) => {
+        this.order_val = response[`data`];
+      })
+      .catch((error) => {
+        this.message_result = error;
+      });
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

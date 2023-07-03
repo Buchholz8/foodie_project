@@ -1,35 +1,27 @@
 <template>
   <div>
-    <p> {{client_order[``]}} </p>
+    <div v-for="order in clientOrders" :key="order.id">
+      <p>Order ID: {{ order[0] }}</p>
+      <p>Item ID: {{ order[0] }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-//i got lost here not sure how to get the order to put it in the cart, im assuming that
-//at some point it got pushed to the api when it was created, but im a little confused on were i get it from
+import cookies from 'vue-cookies';
 
-import axios from "axios";
 export default {
-    data() {
-        return {
-            client_order: undefined
-        }
-    },
+  data() {
+    return {
+      clientOrders: [],
+    };
+  },
+  mounted() {
+    this.getClientOrders();
+  },
   methods: {
-    handle_cart: function () {
-      axios
-        .request({
-          url: "https://foodie.bymoen.codes/api/client-order",
-          headers: {
-            "x-api-key": `rnA2v1qeHqSIjeL98kXk`,
-          },
-        })
-        .then((response) => {
-          this.client_order = response.data[``]
-        })
-        .catch((error) => {
-          error;
-        });
+    getClientOrders() {
+      this.clientOrders = cookies.get('Client_Order');
     },
   },
 };
@@ -37,3 +29,9 @@ export default {
 
 <style scoped>
 </style>
+
+
+
+
+
+

@@ -1,12 +1,14 @@
 <template>
   <div>
-    <button v-if="fail_load === true" @click="get_rest_info"> Restart </button>
-    <p> {{rest_object[`name`]}} </p>
-    <p> {{rest_object[`address`]}} </p>
-    <p> {{rest_object[`phone_number`]}} </p>
-    <p> {{rest_object[`bio`]}} </p>
-    <p> {{rest_object[`city`]}} </p>
-    <img :src="rest_object[`banner_url`]" alt="">
+    <button v-if="fail_load" @click="get_rest_info">Restart</button>
+    <template v-if="rest_object">
+      <p>{{ rest_object.name }}</p>
+      <p>{{ rest_object.address }}</p>
+      <p>{{ rest_object.phone_number }}</p>
+      <p>{{ rest_object.bio }}</p>
+      <p>{{ rest_object.city }}</p>
+      <img :src="rest_object.banner_url" alt="">
+    </template>
   </div>
 </template>
 
@@ -15,8 +17,8 @@ import axios from "axios";
 import cookies from "vue-cookies";
 export default {
   mounted() {
-    this.get_resta_info();
-    this.$root.$on(`rest_info` , this.get_rest_info);
+    this.get_rest_info();
+    this.$root.$on(`rest_info`, this.get_rest_info);
   },
   data() {
     return {
@@ -28,12 +30,10 @@ export default {
     get_rest_info: function () {
       axios
         .request({
-          url: "https://foodie.bymoen.codes/api/restaurant",
-          headers: {
-            "x-api-key": `rnA2v1qeHqSIjeL98kXk`,
-          },
-          params: {
-            restaurant_id: cookies.get(`restaurant_id`),
+          url: "http://127.0.0.1:5000/api/restaurant",
+          method: "GET",
+          data: {
+            token: cookies.get(`token`),
           },
         })
         .then((response) => {
@@ -47,5 +47,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

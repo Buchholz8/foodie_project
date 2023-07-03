@@ -22,21 +22,18 @@ export default {
     company_signup: function () {
       axios
         .request({
-          url: "https://foodie.bymoen.codes/api/restaurant",
-          headers: {
-            "x-api-key": `rnA2v1qeHqSIjeL98kXk`,
-          },
+          url: "http://127.0.0.1:5000/api/restaurant",
           method: `POST`,
           data: {
-            email: this.$refs[`res_email`].value,
             name: this.$refs[`res_name`].value,
             address: this.$refs[`res_address`].value,
             phone_number: this.$refs[`res_phone`].value,
             bio: this.$refs[`res_bio`].value,
+            password: this.$refs[`res_password`].value,
+            email: this.$refs[`res_email`].value,
             city: this.$refs[`res_city`].value,
             profile_url: this.$refs[`res_profile`].value,
             banner_url: this.$refs[`res_banner`].value,
-            password: this.$refs[`res_password`].value,
           },
         })
         .then((response) => {
@@ -52,5 +49,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

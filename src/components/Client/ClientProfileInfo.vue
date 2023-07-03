@@ -1,46 +1,45 @@
 <template>
   <div>
-    <p> {{user_object[`created_at`]}} </p>
-    <p> {{user_object[`username`]}} </p>
-    <img :src="user_object[`image_url`]" alt="">
+    <p v-if="user_object">{{ user_object['created_at'] }}</p>
+    <p v-if="user_object">{{ user_object['username'] }}</p>
+    <img v-if="user_object" :src="user_object['image_url']" alt="">
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import cookies from 'vue-cookies'
+
 export default {
-  mounted( ) {
+  mounted() {
     this.get_client_info();
-    this.$root.$on(`client_info` , new_user_info => this.user_object = new_user_info)
+    this.$root.$on('client_info', new_user_info => this.user_object = new_user_info)
   },
-data() {
-  return {
- user_object: undefined
-  }
-},
-methods: {
-get_client_info: function( ) {
-  axios.request({
-    url: 'https://foodie.bymoen.codes/api/client',
-    headers: {
-      'x-api-key': `rnA2v1qeHqSIjeL98kXk`
-    },
-    params: {
-      client_id : cookies.get(`client_id`)
+  data() {
+    return {
+      user_object: undefined
     }
-  }).then((response) => {
-    this.user_object = response[`data`][0]
-  }).catch((error) =>{
-    error
-  })
-}
-}
+  },
+  methods: {
+    get_client_info() {
+      axios.request({
+        url: 'http://127.0.0.1:5000/api/client',
+        method: 'GET',
+        data: {
+          client_id: cookies.get('client_id')
+        }
+      }).then((response) => {
+        this.user_object = response.data[0]
+      }).catch((error) => {
+        console.error(error)
+      })
+    }
+  }
 };
 </script>
 
 <style scoped>
-img{
+img {
   max-height: 120px;
   max-width: 120px;
 }
