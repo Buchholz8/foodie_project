@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <p>want to change your information?</p>
-    <input type="text" ref="email" placeholder="email">
-    <input type="text" ref="username" placeholder="username">
-    <input type="text" ref="first_name" placeholder="first name">
-    <input type="text" ref="last_name" placeholder="last name">
-    <input type="text" ref="image_url" placeholder="img">
-    <input type="text" ref="bio" placeholder="bio">
-    <input type="text" ref="password" placeholder="password">
-    <input type="text" ref="username" placeholder="username">
-    <p>please enter your password</p>
-    <input type="password" placeholder="password" ref="password" />
-    <button @click="patched_data">Save Updates</button>
-    <p v-if="successMessage">{{ successMessage }}</p>
-    <p v-if="errorMessage">{{ errorMessage }}</p>
+  <div class="container">
+    <p class="change-info-message">Want to change your information?</p>
+    <input type="text" ref="email" placeholder="Email" class="input-field">
+    <input type="text" ref="username" placeholder="Username" class="input-field">
+    <input type="text" ref="first_name" placeholder="First Name" class="input-field">
+    <input type="text" ref="last_name" placeholder="Last Name" class="input-field">
+    <input type="text" ref="image_url" placeholder="Image URL" class="input-field">
+    <input type="text" ref="bio" placeholder="Bio" class="input-field">
+    <input type="password" placeholder="Password" ref="password" class="input-field">
+    <button @click="patched_data" class="save-button">Save Updates</button>
+    <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -68,4 +65,45 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  background-color: lightgray;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.change-info-message {
+  color: black;
+}
+
+.input-field {
+  background-color: lightgray;
+  color: black;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.save-button {
+  background-color: lightgray;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: pink;
+  color: white;
+}
+
+.success-message,
+.error-message {
+  color: black;
+  margin-top: 10px;
+}
+</style>

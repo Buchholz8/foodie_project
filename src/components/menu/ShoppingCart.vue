@@ -1,9 +1,9 @@
 <template>
   <div>
-    <button @click="handle_checkout">To Checkout</button>
-    <div>
-      <p>Order ID: {{ order_id }}</p>
-      <p>Item ID: {{ item_id }}</p>
+    <button @click="handle_checkout" class="checkout-button">To Checkout</button>
+    <div class="order-details">
+      <p class="order-id">Order ID: {{ order_id }}</p>
+      <p class="item-id">Item ID: {{ item_id }}</p>
     </div>
   </div>
 </template>
@@ -34,6 +34,28 @@ export default {
 </script>
 
 <style scoped>
+.checkout-button {
+  background-color: pink;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.order-details {
+  background-color: lightgray;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.order-id,
+.item-id {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
 </style>
 
 

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <button @click="logout_handler">LogOut</button>
+    <button @click="logout_handler" class="logout-button">Log Out</button>
     <client-profile-info></client-profile-info>
-    <button @click="toggleview">To ShoppingCart</button>
-    <button @click="change_info">Change your info?</button>
+    <button @click="toggleview" class="shopping-cart-button">To Shopping Cart</button>
+    <button @click="change_info" class="change-info-button">Change your info?</button>
     <client-profile-edit v-if="!change_val"></client-profile-edit>
     <all-menu-item v-if="!showCart"></all-menu-item>
     <shopping-cart v-if="showCart"></shopping-cart>
@@ -33,6 +33,8 @@ export default {
   },
   methods: {
     logout_handler() {
+      cookies.remove(`token`) //this is temp so that this will function im not sure why im gtting errors on the delete, its working as intended 
+      //and it will run the data base procedure but its giving ,e am error 500 as you could see
       axios
         .request({
           url: "http://127.0.0.1:5000/api/client-login",
@@ -66,5 +68,40 @@ export default {
 </script>
 
 <style scoped>
+.logout-button,
+.shopping-cart-button,
+.change-info-button {
+  background-color: lightgray;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.logout-button {
+  margin-top: 10px;
+}
+
+.logout-button:hover,
+.shopping-cart-button:hover,
+.change-info-button:hover {
+  background-color: pink;
+  color: white;
+}
+
+.logout-button:focus,
+.shopping-cart-button:focus,
+.change-info-button:focus {
+  outline: none;
+}
+
+.logout-button:active,
+.shopping-cart-button:active,
+.change-info-button:active {
+  background-color: #ff80ab;
+}
 </style>
 

@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <p>hello world</p>
-    <p v-if="user_object">{{ user_object[4] }}</p>
-    <p v-if="user_object">{{ user_object[0] }}</p>
-    <img v-if="user_object" :src="user_object[1]" alt="">
+  <div class="page-header">
+    <div v-if="user_object" class="user-info">
+      <div class="user-left">
+        <p class="user-handle">{{ user_object[0] }}</p>
+        <p class="user-name">{{ user_object[4] }}</p>
+      </div>
+    </div>
+    <img v-if="user_object" :src="user_object[1]" alt="" class="user-avatar">
   </div>
 </template>
 
@@ -27,7 +30,7 @@ export default {
         url: 'http://127.0.0.1:5000/api/client',
         method: 'GET',
         params: {
-          client_id: cookies.get('client_id')
+          token: cookies.get('token')
         }
       }).then((response) => {
         this.user_object = response.data[0]
@@ -40,8 +43,47 @@ export default {
 </script>
 
 <style scoped>
-img {
-  max-height: 120px;
-  max-width: 120px;
+.page-header {
+  background-color: lightgray;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-left {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-handle {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.user-avatar {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
 }
 </style>
+

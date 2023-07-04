@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <input type="text" ref="name" placeholder="name">
-        <input type="text" ref="desc" placeholder="desciption">
-        <input type="text" ref="image" placeholder="image">
-        <input type="number" ref="price" placeholder="price">
-        <button @click="menu_info">SAVE</button>
-        <p> {{ this.message }} </p>
+    <div class="container">
+        <p>Add a menu item</p>
+        <input type="text" ref="name" placeholder="name" class="input-field">
+        <input type="text" ref="desc" placeholder="description" class="input-field">
+        <input type="text" ref="image" placeholder="image" class="input-field">
+        <input type="number" ref="price" placeholder="price" class="input-field">
+        <button @click="menu_info" class="save-button">SAVE</button>
+        <p>{{ message }}</p>
     </div>
 </template>
 
@@ -45,4 +46,29 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+    background-color: lightgray;
+    padding: 20px;
+}
+
+.input-field {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.save-button {
+    background-color: pink;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+p {
+    color: black;
+}
+</style>

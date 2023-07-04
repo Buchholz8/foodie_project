@@ -1,9 +1,9 @@
 <template>
-    <div>
-      <button @click="logout_handler">Log Out</button>
-        <rest-profile-info></rest-profile-info>
-        <menu-item-create></menu-item-create>
-    </div>
+  <div class="container">
+    <button @click="logout_handler" class="logout-button">Log Out</button>
+    <rest-profile-info></rest-profile-info>
+    <menu-item-create></menu-item-create>
+  </div>
 </template>
 
 <script>
@@ -13,7 +13,8 @@ import MenuItemCreate from '@/components/menu/MenuItemCreate.vue'
 import axios from 'axios'
     export default {
       methods: {
-        logout_handler() {
+        logout_handler() { //same issue as the other delete getting error 500 even though the code is being executed in the data base
+          cookies.remove(`token`)
       axios
         .request({
           url: "http://127.0.0.1:5000/api/restaurant-login",
@@ -47,5 +48,24 @@ import axios from 'axios'
 </script>
 
 <style scoped>
+.container {
+  background-color: lightgray;
+  padding: 20px;
+  min-height: 30vh;
+}
 
+.logout-button {
+  background-color: lightgray;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: pink;
+  color: white;
+}
 </style>

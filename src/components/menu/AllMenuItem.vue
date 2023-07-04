@@ -1,15 +1,25 @@
 <template>
-  <div>
-    <button @click="make_order">Shopping Cart</button>
-    <div v-for="(item, index) in items" :key="'item-' + index">
-      <div>
-        <p>item #{{ item[0] }}</p>
-        <p>restaurant #{{ item[5] }}</p>
-        <p>{{ item[1] }}</p>
-        <p>{{ item[2] }}</p>
-        <p>{{ item[3] }}</p>
-        <img :src="item[4]" alt="">
-        <button @click="saveDataToCookie(item, index)">Add to Cart</button>
+  <div class="container">
+    <div class="finalize-cart">
+      <button @click="make_order">Finalize Cart</button>
+    </div>
+    <div class="card-grid">
+      <div v-for="(item, index) in items" :key="'item-' + index" class="card">
+        <div class="card-inner">
+          <div class="card-header">
+            <p class="item-number">Item #{{ item[0] }}</p>
+            <p>Restaurant #{{ item[5] }}</p>
+          </div>
+          <div class="card-body">
+            <p class="item-name">{{ item[1] }}</p>
+            <p class="item-description">{{ item[2] }}</p>
+            <p class="item-price">{{ item[3] }}</p>
+            <img :src="item[4]" alt="" class="item-image">
+          </div>
+          <div class="card-footer">
+            <button @click="saveDataToCookie(item, index)">Add to Cart</button>
+          </div>
+        </div>
       </div>
     </div>
     <single-menu-item></single-menu-item>
@@ -76,9 +86,89 @@ export default {
 };
 </script>
 <style scoped>
-img {
-    max-height: 120px;
-    max-width: 120px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 400px; /* Set a fixed height for the cards */
+}
+
+.card-inner {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 10px;
+}
+
+.card-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.item-number {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.item-description {
+  margin-bottom: 5px;
+}
+
+.item-price {
+  margin-bottom: 10px;
+}
+
+.item-image {
+  max-height: 120px;
+  max-width: 120px;
+  margin-bottom: 10px;
+}
+
+.card-footer {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.finalize-cart {
+  margin-top: 20px;
+}
+
+.finalize-cart button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
 </style>
   

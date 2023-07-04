@@ -64,6 +64,9 @@ export default {
 
 
 <style scoped>
+body{
+  background-color: rgb(112, 108, 108);
+}
 img {
   max-height: 70px;
   max-width: 70px;

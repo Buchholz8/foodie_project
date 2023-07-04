@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <p>please login as company</p>
-    <input type="email" placeholder="email" ref="rest_email" />
-    <input type="password" placeholder="password" ref="rest_password" />
-    <button @click="attempt_login">Login</button>
+  <div class="container">
+    <p class="login-message">Please login as a company</p>
+    <input type="email" placeholder="Email" ref="rest_email" class="input-field">
+    <input type="password" placeholder="Password" ref="rest_password" class="input-field">
+    <button @click="attempt_login" class="login-button">Login</button>
   </div>
 </template>
 
@@ -36,4 +36,38 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  background-color: lightgray;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.login-message {
+  color: black;
+}
+
+.input-field {
+  background-color: lightgray;
+  color: black;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.login-button {
+  background-color: lightgray;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: pink;
+  color: white;
+}
 </style>

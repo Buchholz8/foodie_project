@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <p>sign up as a company</p>
-    <input type="email" placeholder="email" ref="res_email" />
-    <input type="text" placeholder="name" ref="res_name" />
-    <input type="text" placeholder="address" ref="res_address" />
-    <input type="text" placeholder="phone number" ref="res_phone" />
-    <input type="text" placeholder="bio" ref="res_bio" />
-    <input type="text" placeholder="city" ref="res_city" />
-    <input type="url" placeholder="profile" ref="res_profile" />
-    <input type="url" placeholder="banner" ref="res_banner" />
-    <input type="password" placeholder="password" ref="res_password" />
-    <button @click="company_signup">Sign Up</button>
+  <div class="container">
+    <p class="signup-message">Sign up as a company</p>
+    <input type="email" placeholder="Email" ref="res_email" class="input-field">
+    <input type="text" placeholder="Name" ref="res_name" class="input-field">
+    <input type="text" placeholder="Address" ref="res_address" class="input-field">
+    <input type="text" placeholder="Phone Number" ref="res_phone" class="input-field">
+    <input type="text" placeholder="Bio" ref="res_bio" class="input-field">
+    <input type="text" placeholder="City" ref="res_city" class="input-field">
+    <input type="url" placeholder="Profile" ref="res_profile" class="input-field">
+    <input type="url" placeholder="Banner" ref="res_banner" class="input-field">
+    <input type="password" placeholder="Password" ref="res_password" class="input-field">
+    <button @click="company_signup" class="signup-button">Sign Up</button>
   </div>
 </template>
 
@@ -49,4 +49,38 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  background-color: lightgray;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.signup-message {
+  color: black;
+}
+
+.input-field {
+  background-color: lightgray;
+  color: black;
+  padding: 10px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.signup-button {
+  background-color: lightgray;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: pink;
+  color: white;
+}
+</style>
